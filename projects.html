@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Add this to your existing <style> block for tabs */
+        .tab-container { margin-top: 20px; }
+        .tab-buttons { display: flex; gap: 10px; border-bottom: 1px solid var(--current-line); margin-bottom: 15px; }
+        .tab-link {
+            padding: 10px 20px; cursor: pointer; color: var(--comment); border: none; background: none; font-family: inherit;
+        }
+        .tab-link.active { color: var(--cyan); border-bottom: 2px solid var(--cyan); }
+        .tab-content { display: none; padding: 10px 0; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+<nav style="
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    background: #21222c;
+    border-bottom: 1px solid var(--current-line);
+    font-family: 'Meslo LG L', monospace;
+    font-size: 14px;
+">
+    <a href="index.html" style="color: var(--purple);">[ 01. Home ]</a>
+    <a href="projects.html" style="color: var(--cyan);">[ 02. Projects ]</a>
+    <a href="travel.html" style="color: var(--green);">[ 03. Travel ]</a>
+</nav>
+    <div class="container">
+        <div class="breadcrumb">~ / portfolio / <span style="color: var(--pink);">projects.html</span></div>
+        <h1 style="color: var(--purple); text-align: left;"># Engineering Projects</h1>
+
+        <div class="card" style="border-color: var(--cyan);">
+            <div class="card-title">>_ Automated Airfoil-to-CFD Tool</div>
+            <a href="https://github.com/..." style="font-size: 12px;">[ View Source Code ]</a>
+
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-link active" onclick="openTab(event, 'Overview')">Overview</button>
+                    <button class="tab-link" onclick="openTab(event, 'Media')">Media</button>
+                    <button class="tab-link" onclick="openTab(event, 'Results')">Results</button>
+                </div>
+
+                <div id="Overview" class="tab-content active">
+                    <p>Automated pipeline in <b>Python</b> for OpenFOAM geometry generation.</p>
+                </div>
+                <div id="Media" class="tab-content">
+                    <img src="assets/mesh_preview.png" style="width:100%; border-radius:5px;">
+                </div>
+                <div id="Results" class="tab-content">
+                    <p style="color: var(--green);">L/D Ratio: 24.2</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

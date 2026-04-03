@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital CV | Ajeet Krishnasamy</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/meslo-lg.min.css">
+
+    <style>
+        /* --- 1. DRACULA THEME VARIABLES --- */
+        :root {
+            --background: #282a36;
+            --current-line: #44475a;
+            --foreground: #f8f8f2;
+            --comment: #6272a4;
+            --cyan: #8be9fd;
+            --green: #50fa7b;
+            --orange: #ffb86c;
+            --pink: #ff79c6;
+            --purple: #bd93f9;
+        }
+
+        /* --- 2. GLOBAL STYLING --- */
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Meslo LG L', 'JetBrains Mono', monospace;
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        a {
+            color: var(--cyan);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--pink);
+        }
+
+        /* --- 3. COMPONENTS --- */
+        .breadcrumb {
+            font-size: 12px;
+            color: var(--comment);
+            margin-bottom: 30px;
+        }
+
+        .hero {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 280px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .bio-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            color: var(--purple);
+            font-size: 36px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .metadata-row, .action-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .divider {
+            border: 0;
+            border-top: 1px solid var(--current-line);
+            margin: 40px 0;
+        }
+
+        /* Experience/Education Blocks */
+        .section-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #21222c;
+            border-left: 4px solid var(--purple);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .card-title {
+            color: var(--cyan);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .card-meta {
+            color: var(--comment);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* Download Button */
+        .download-btn {
+            background-color: #21222c;
+            color: var(--purple);
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--purple);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            border-color: var(--pink);
+            color: var(--pink);
+            box-shadow: 0 0 10px var(--pink);
+        }
+
+        /* Skill Tags */
+        .tag {
+            background-color: var(--current-line);
+            padding: 2px 8px;
+            margin: 2px;
+            border-radius: 4px;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .hero { justify-content: center; text-align: center; }
+            .bio-content { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+<nav style="
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    background: #21222c;
+    border-bottom: 1px solid var(--current-line);
+    font-family: 'Meslo LG L', monospace;
+    font-size: 14px;
+">
+    <a href="index.html" style="color: var(--purple);">[ 01. Home ]</a>
+    <a href="projects.html" style="color: var(--cyan);">[ 02. Projects ]</a>
+    <a href="travel.html" style="color: var(--green);">[ 03. Travel ]</a>
+</nav>
+
+<div class="container">
+    <div class="breadcrumb">
+        ~ / portfolio / <span style="color: var(--pink);">ajeet_krishnasamy.html</span>
+    </div>
+
+    <div class="hero">
+        <img src="assets/profile_pic.png" alt="Ajeet Krishnasamy" class="profile-pic">
+        <div class="bio-content">
+            <h1>Ajeet Krishnasamy</h1>
+            <p>
+                I am a <span style="color: var(--orange);">Biomedical Mechanical Engineering</span> graduate
+                specializing in <span style="color: var(--cyan);">aerodynamics</span> and
+                <span style="color: var(--cyan);">CFD</span> for the aerospace and automotive sectors.
+                I leverage <span style="color: var(--cyan);">Python</span> and
+                <span style="color: var(--cyan);">MATLAB</span> to automate high-fidelity simulations in
+                <span style="color: var(--cyan);">OpenFOAM</span>, bridging the gap between conceptual
+                <span style="color: var(--orange);">CAD</span> design and physical validation.
+            </p>
+
+            <div class="metadata-row">
+                <span style="color: var(--orange);">Toronto, ON</span>
+                <span style="color: var(--comment);">|</span>
+                <span style="color: var(--orange);">CAN & US Citizen</span>
+                <span style="color: var(--comment);">|</span>
+                <span style="color: var(--orange);">Open to Relocation</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <a href="assets/AjeetKrishnasamyResumeEng.pdf" class="download-btn" download>Resume.pdf</a>
+        <span style="color: var(--comment);">|</span>
+        <a href="mailto:ajeetkrish@icloud.com">ajeetkrish@icloud.com</a>
+        <span style="color: var(--comment);">|</span>
+        <a href="https://www.linkedin.com/in/ajeetkrishnasamy/" target="_blank">LinkedIn</a>
+        <span style="color: var(--comment);">|</span>
+        <a href="https://github.com/ajeet-krish" target="_blank">GitHub</a>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-header" style="color: var(--purple);"># Experience</div>
+
+    <div class="card">
+        <div class="card-title">Systems Engineer (Intern) | CenTrak</div>
+        <div class="card-meta">10/2020 - 09/2021 | Newtown, PA, United States</div>
+        <div>
+            • Developed statistical models (R, Excel) to assess medical device reliability.<br>
+            • Automated performance reporting for Connect Pulse™ to minimize system downtime.<br>
+            • Analyzed battery and device datasets to predict and prevent hardware failures.<br>
+            • Structured and cleaned large-scale RTLS data to accelerate troubleshooting.
+        </div>
+        <br>
+        <div class="card-title">Systems Engineer (Intern) | CenTrak</div>
+        <div class="card-meta">05/2019 - 09/2019 | Newtown, PA, United States</div>
+        <div>
+            • Applied regression and classification models to optimize RTLS location accuracy.<br>
+            • Executed on-site testing protocols to validate hardware field performance.<br>
+            • Synthesized technical data into actionable recommendations for system upgrades.
+        </div>
+    </div>
+
+    <div class="section-header" style="color: var(--orange);"># Skills</div>
+    <div class="card" style="border-color: var(--orange);">
+        <div class="card-title">Hardware & Software Proficiencies</div>
+        <div style="margin-top: 10px;">
+            <span style="color: var(--purple);">return</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"CAD": [<span class="tag" style="color: var(--cyan); border: 1px solid var(--cyan);">SolidWorks</span>, <span class="tag" style="color: var(--cyan); border: 1px solid var(--cyan);">FreeCAD</span>],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"CFD": [<span class="tag" style="color: var(--green); border: 1px solid var(--green);">Ansys CFX</span>, <span class="tag" style="color: var(--green); border: 1px solid var(--green);">OpenFOAM</span>],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Data": [<span class="tag" style="color: var(--orange); border: 1px solid var(--orange);">Python</span>, <span class="tag" style="color: var(--orange); border: 1px solid var(--orange);">MATLAB</span>]<br>
+            }
+        </div>
+    </div>
+
+    <div class="section-header" style="color: var(--pink);"># Education</div>
+    <div class="card" style="border-color: var(--pink);">
+        <div class="card-title">University of Ottawa</div>
+        <div class="card-meta">Ottawa, ON, Canada | May 2026</div>
+        <div>
+            <span style="color: var(--purple);">return</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"degree": "Bachelor of Applied Science (BASc)",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"major": "Biomedical Mechanical Engineering"<br>
+            }
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
