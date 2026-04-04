@@ -47,10 +47,11 @@ body {
 
 /* --- 4. CONTAINERS & LAYOUT --- */
 .container {
-    max-width: 900px;
-    width: 100%;
-    padding: 40px 20px;
+    max-width: 1100px;
+    width: 90%;
+    padding: 60px 20px;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .breadcrumb {
@@ -163,8 +164,80 @@ a:hover {
     display: inline-block;
 }
 
-/* --- 7. RESPONSIVENESS --- */
+.container.wide {
+    max-width: 1600px;
+    width: 95%;
+}
+
+.travel-wrapper {
+    display: flex;
+    gap: 20px;
+    height: 75vh;
+    margin-top: 20px;
+}
+
+.location-sidebar {
+    flex: 0 0 250px; /* Fixed width: will not shrink or grow */
+    background: #21222c;
+    border: 1px solid var(--current-line);
+    border-radius: 4px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#map {
+    /* Map stretches to fill all remaining space */
+    flex: 1;
+    border: 1px solid var(--current-line);
+    border-radius: 4px;
+    background-color: var(--background);
+    z-index: 1; /* Prevents map controls from overlapping the nav */
+}
+
+/* --- 8. MAP SIDEBAR MENU --- */
+#location-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: var(--background);
+    border: 1px solid var(--current-line);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    border-color: var(--pink);
+    color: var(--pink);
+    transform: translateX(5px);
+}
+
+/* --- 9. LEAFLET DRACULA OVERRIDES --- */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background-color: #282a36 !important;
+    color: #f8f8f2 !important;
+    border: 1px solid #44475a;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* --- 10. MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    .hero { justify-content: center; text-align: center; }
-    .bio-content { text-align: left; }
+    .travel-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+    .location-sidebar {
+        flex: auto;
+        max-height: 250px; /* Prevents long lists from pushing the map too far down */
+    }
+    #map {
+        height: 400px;
+    }
 }
