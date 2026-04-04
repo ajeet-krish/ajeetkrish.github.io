@@ -7,7 +7,7 @@
 ## Overview
 This repository contains the source code for my professional portfolio website. Designed with a Terminal (Dracula theme) aesthetic, it showcases my background in **Biomedical Mechanical Engineering** and my transition into **Aerospace & Aerodynamics**.
 
-**Live Site:** [https://ajeet-krish.github.io/](https://ajeet-krish.github.io/)
+**Live Site:** [https://ajeet-krish.github.io/portfolio](https://ajeet-krish.github.io/portfolio)
 
 ---
 

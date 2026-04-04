@@ -24,11 +24,18 @@
         ~ / portfolio / <span style="color: var(--pink);">travel.py</span>
     </div>
 
+    <div class="section-header" style="color: var(--purple);"># Exploring The Grand Line</div>
+
+    <div class="card">
+        <div>
+            Work in progress.
+        </div>
+    </div>
+
     <div class="travel-wrapper">
         <aside class="location-sidebar">
-            <div class="code-keyword" style="margin-bottom: 15px;">visited_locations = [</div>
+            <div class="section-header" style="color: var(--orange);"># Where I've Been</div>
             <ul id="location-menu"></ul>
-            <div class="code-keyword" style="margin-top: 15px;">]</div>
         </aside>
 
         <div id="map"></div>
@@ -38,7 +45,7 @@
 <script>
     // --- 1. INITIALIZE THE MAP ---
     // Target the 'map' div, set center coordinates [Lat, Lon], and initial zoom level.
-    const map = L.map('map').setView([43.59, -79.62], 12);
+    const map = L.map('map').setView([43.59, -79.62], 10);
 
     // --- 2. ADD TILE LAYER (BASEMAP) ---
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -47,15 +54,23 @@
         maxZoom: 19
     }).addTo(map);
 
-    // --- 3. DEFINE DATA ---
+    // Custom LUFFY icon
+    const travelIcon = L.icon({
+        iconUrl: 'assets/img/luffy_icons.png', // Path to your PNG
+        iconSize: [100, 100],     // Width and height of the icon in pixels
+        iconAnchor: [50, 100],    // Point of the icon which will correspond to marker's location
+        popupAnchor: [0, -75]    // Point from which the popup should open relative to the iconAnchor
+    });
+
+    // Define locations
     const locations = [
-        { name: "Chennai", coords: [13.04, 80.14], zoom: 11, img: "assets/img/chennai.jpg" },
-        { name: "Melbourne", coords: [-37.8136, 144.9631], zoom: 11, img: "assets/img/melbourne.jpg" },
-        { name: "Bangkok", coords: [13.7563, 100.5018], zoom: 11, img: "assets/img/bangkok.jpg" },
-        { name: "Mississauga", coords: [43.59, -79.62], zoom: 11, img: "assets/img/mississauga.jpg" },
-        { name: "Ottawa", coords: [45.41, -75.67], zoom: 11, img: "assets/img/ottawa.jpg" },
-        { name: "New Delhi", coords: [27.17, -78.04], zoom: 11, img: "assets/img/newdelhi.jpg" },
-        { name: "Los Angeles", coords: [34.10, -118.34], zoom: 11, img: "assets/img/losangeles.jpg" },
+        { name: "Mississauga", coords: [43.59, -79.62], country: "Canada", zoom: 12, img: "assets/img/mississauga.jpg" },
+        { name: "Ottawa", coords: [45.41, -75.67], country: "Canada",  zoom: 12, img: "assets/img/ottawa.jpg" },
+        { name: "Chennai", coords: [13.04, 80.14], country: "India", zoom: 12, img: "assets/img/chennai.jpg" },
+        { name: "Melbourne", coords: [-37.8136, 144.9631], country: "Australia",  zoom: 12, img: "assets/img/melbourne.jpg" },
+        { name: "Bangkok", coords: [13.7563, 100.5018], country: "Thailand", zoom: 12, img: "assets/img/bangkok.jpg" },
+        { name: "New Delhi", coords: [27.17, -78.04], country: "India", zoom: 12, img: "assets/img/newdelhi.jpg" },
+        { name: "Los Angeles", coords: [34.10, -118.34], country: "United States", zoom: 11, img: "assets/img/losangeles.jpg" }
     ];
 
     const menu = document.getElementById('location-menu');
@@ -63,7 +78,7 @@
     // 4. Initialization Logic
     locations.forEach(loc => {
         // Create the Leaflet Marker
-        const marker = L.marker(loc.coords).addTo(map);
+        const marker = L.marker(loc.coords, { icon: travelIcon }).addTo(map);
 
         const popupContent = `
             <div style="text-align: center; width: 150px;">
@@ -73,10 +88,15 @@
         `;
         marker.bindPopup(popupContent);
 
-        // Create the Sidebar Menu Item
+        // Create the Card-Style Menu Item
         const li = document.createElement('li');
         li.className = 'menu-item';
-        li.innerHTML = `<span class="code-string">"${loc.name}"</span>,`;
+        li.innerHTML = `
+            <div class="card-title">${loc.name}</div>
+            <div class="card-meta">
+                LOC: ${loc.coords[0].toFixed(2)}, ${loc.coords[1].toFixed(2)} | ${loc.country || 'Global'}
+            </div>
+        `;
 
         // Add click behavior
         li.addEventListener('click', () => {
@@ -95,8 +115,7 @@
     window.addEventListener('resize', () => {
         map.invalidateSize();
     });
-    setTimeout(() => {
-        map.invalidateSize();
+    setTimeout(() => {map.invalidateSize();
     }, 200);
 </script>
 

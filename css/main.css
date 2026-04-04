@@ -114,7 +114,6 @@ h1 {
     border-left: 4px solid var(--purple);
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 0 8px 8px 0;
 }
 
 .card-title {
@@ -177,12 +176,10 @@ a:hover {
 }
 
 .location-sidebar {
-    flex: 0 0 250px; /* Fixed width: will not shrink or grow */
-    background: #21222c;
-    border: 1px solid var(--current-line);
-    border-radius: 4px;
-    padding: 20px;
-    overflow-y: auto;
+    flex: 0 0 300px; /* Fixed width: will not shrink or grow */
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 #map {
@@ -201,21 +198,34 @@ a:hover {
     margin: 0;
 }
 
+/* Menu Item as a Card */
 .menu-item {
-    padding: 12px;
-    margin-bottom: 10px;
-    background: var(--background);
-    border: 1px solid var(--current-line);
-    border-radius: 4px;
+    background-color: #21222c; /* Dracula Card Background */
+    border-left: 4px solid var(--orange); /* Experience Box Accent */
+    padding: 15px;
+    margin-bottom: 15px;
     cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s ease;
+    list-style: none;
+    transition: all 0.3s ease;
 }
 
 .menu-item:hover {
     border-color: var(--pink);
-    color: var(--pink);
-    transform: translateX(5px);
+    transform: translateX(8px);
+    background-color: #282a36;
+}
+
+.menu-item .card-title {
+    color: var(--cyan);
+    font-weight: none;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.menu-item .card-meta {
+    color: var(--comment);
+    font-size: 11px;
+    font-family: 'Meslo LG L', monospace;
 }
 
 /* --- 9. LEAFLET DRACULA OVERRIDES --- */
