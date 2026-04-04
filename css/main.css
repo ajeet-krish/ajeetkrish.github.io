@@ -1,4 +1,8 @@
-/* --- 1. DRACULA THEME VARIABLES --- */
+/* ==========================================================================
+   1. DRACULA THEME VARIABLES
+   ========================================================================== */
+
+/* Stores the color palette so you can use variable names instead of hex codes. */
 :root {
     --background: #282a36;
     --current-line: #44475a;
@@ -11,7 +15,12 @@
     --purple: #bd93f9;
 }
 
-/* --- 2. GLOBAL STYLING --- */
+/* ==========================================================================
+   2. BASE HTML ELEMENTS
+   ========================================================================== */
+
+/* Sets the default background, text color, and font for the entire webpage.
+   Uses flexbox to center content vertically in a column. */
 body {
     background-color: var(--background);
     color: var(--foreground);
@@ -23,7 +32,83 @@ body {
     align-items: center;
 }
 
-/* --- 3. NAVIGATION --- */
+/* Formats the main page title with the theme's purple color and centers it. */
+h1 {
+    color: var(--purple);
+    font-size: 36px;
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Sets default link color to cyan and removes the underline. */
+a {
+    color: var(--cyan);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Changes link color to pink when the user hovers over it. */
+a:hover {
+    color: var(--pink);
+}
+
+/* Creates a horizontal line used to separate different sections of the page. */
+.divider {
+    border: 0;
+    border-top: 1px solid var(--current-line);
+    margin: 40px 0;
+}
+
+/* ==========================================================================
+   3. LAYOUT & CONTAINERS
+   ========================================================================== */
+
+/* The main wrapper that restricts page content width and keeps it centered. */
+.container {
+    max-width: 1000px;
+    width: 90%;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* A wider version of the main wrapper, useful for large elements like maps. */
+.container.wide {
+    max-width: 1600px;
+    width: 95%;
+}
+
+/* Uses flexbox to place the profile picture and bio side-by-side. */
+.hero {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+/* Ensures the text portion of the hero section expands to fill available space. */
+.bio-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Aligns small pieces of data or buttons in a centered, horizontal row. */
+.metadata-row, .action-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   4. NAVIGATION
+   ========================================================================== */
+
+/* Styles the top navigation bar, spacing out the links and adding a bottom border. */
 .top-nav {
     width: 100%;
     display: flex;
@@ -36,79 +121,29 @@ body {
     box-sizing: border-box;
 }
 
+/* Removes standard link styling from navigation links. */
 .top-nav a {
     text-decoration: none;
     transition: 0.3s;
 }
 
+/* Forces navigation links to turn pink on hover, overriding default link hover. */
 .top-nav a:hover {
     color: var(--pink) !important;
 }
 
-/* --- 4. CONTAINERS & LAYOUT --- */
-.container {
-    max-width: 1000px;
-    width: 90%;
-    padding: 60px 20px;
-    box-sizing: border-box;
-    margin: 0 auto;
-}
+/* ==========================================================================
+   5. COMPONENTS (Cards, Buttons, Tags, Images)
+   ========================================================================== */
 
-.breadcrumb {
-    font-size: 12px;
-    color: var(--comment);
-    margin-bottom: 30px;
-}
-
-.hero {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-.profile-pic {
-    width: 280px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.bio-content {
-    flex: 1;
-    min-width: 300px;
-}
-
-h1 {
-    color: var(--purple);
-    font-size: 36px;
-    margin-top: 0;
-    text-align: center;
-}
-
-.metadata-row, .action-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    font-size: 16px;
-}
-
-.divider {
-    border: 0;
-    border-top: 1px solid var(--current-line);
-    margin: 40px 0;
-}
-
-/* --- 5. CARDS & SECTIONS --- */
+/* Formats the main headers for sections like 'Projects' or 'Experience'. */
 .section-header {
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: bold;
 }
 
+/* Styles individual content blocks with a darker background and a purple left border. */
 .card {
     background-color: #21222c;
     border-left: 4px solid var(--purple);
@@ -116,28 +151,44 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Styles the primary title text inside a card element. */
 .card-title {
     color: var(--cyan);
     font-size: 18px;
 }
 
+/* Styles the secondary information (like dates or locations) inside a card. */
 .card-meta {
     color: var(--comment);
     font-size: 13px;
     margin-bottom: 10px;
 }
 
-/* --- 6. INTERACTIVE ELEMENTS --- */
-a {
-    color: var(--cyan);
-    text-decoration: none;
-    transition: 0.3s;
+/* Styles small navigational text paths (e.g., Home > About). */
+.breadcrumb {
+    font-size: 12px;
+    color: var(--comment);
+    margin-bottom: 30px;
 }
 
-a:hover {
-    color: var(--pink);
+/* Rounds the corners and adds a shadow to the profile image. */
+.profile-pic {
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+/* Creates a small, rounded badge to display skills or technologies. */
+.tag {
+    background-color: var(--current-line);
+    padding: 2px 8px;
+    margin: 2px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: inline-block;
+}
+
+/* Styles actionable buttons with a solid outline and bold text. */
 .download-btn {
     background-color: #21222c;
     color: var(--purple);
@@ -148,26 +199,18 @@ a:hover {
     transition: all 0.3s ease;
 }
 
+/* Adds a glowing pink effect and changes text color when hovering over the button. */
 .download-btn:hover {
     border-color: var(--pink);
     color: var(--pink);
     box-shadow: 0 0 10px var(--pink);
 }
 
-.tag {
-    background-color: var(--current-line);
-    padding: 2px 8px;
-    margin: 2px;
-    border-radius: 4px;
-    font-size: 13px;
-    display: inline-block;
-}
+/* ==========================================================================
+   6. MAP INTERFACE
+   ========================================================================== */
 
-.container.wide {
-    max-width: 1600px;
-    width: 95%;
-}
-
+/* A container that holds both the map and the sidebar list side-by-side. */
 .travel-wrapper {
     display: flex;
     gap: 20px;
@@ -175,33 +218,34 @@ a:hover {
     margin-top: 20px;
 }
 
+/* Locks the sidebar list to a specific width so it doesn't compress. */
 .location-sidebar {
-    flex: 0 0 275px; /* Fixed width: will not shrink or grow */
+    flex: 0 0 275px;
     background: transparent;
     border: none;
     padding: 0;
 }
 
+/* Instructs the map to fill all remaining horizontal space next to the sidebar. */
 #map {
-    /* Map stretches to fill all remaining space */
     flex: 1;
     border: 1px solid var(--current-line);
     border-radius: 4px;
     background-color: var(--background);
-    z-index: 1; /* Prevents map controls from overlapping the nav */
+    z-index: 1;
 }
 
-/* --- 8. MAP SIDEBAR MENU --- */
+/* Removes default bullet points and spacing from the location list. */
 #location-menu {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Menu Item as a Card */
+/* Styles each clickable location in the sidebar to look like a small card. */
 .menu-item {
-    background-color: #21222c; /* Dracula Card Background */
-    border-left: 4px solid var(--orange); /* Experience Box Accent */
+    background-color: #21222c;
+    border-left: 4px solid var(--orange);
     padding: 15px;
     margin-bottom: 15px;
     cursor: pointer;
@@ -209,26 +253,29 @@ a:hover {
     transition: all 0.3s ease;
 }
 
+/* Shifts the menu item slightly to the right and turns the border pink on hover. */
 .menu-item:hover {
     border-color: var(--pink);
     transform: translateX(8px);
     background-color: #282a36;
 }
 
+/* Overrides the default card-title size for tighter fit inside the sidebar menu. */
 .menu-item .card-title {
     color: var(--cyan);
-    font-weight: none;
+    font-weight: normal;
     font-size: 15px;
     margin-bottom: 4px;
 }
 
+/* Overrides the default card-meta font specifically for the sidebar menu. */
 .menu-item .card-meta {
     color: var(--comment);
     font-size: 11px;
     font-family: 'Meslo LG L', monospace;
 }
 
-/* --- 9. LEAFLET DRACULA OVERRIDES --- */
+/* Overrides the default popup colours, following the Dracula colours. */
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
     background-color: #282a36 !important;
@@ -237,16 +284,25 @@ a:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* --- 10. MOBILE RESPONSIVENESS --- */
+/* ==========================================================================
+   7. MOBILE RESPONSIVENESS
+   ========================================================================== */
+
+/* These rules only apply when the screen width is 768px or smaller (tablets/phones). */
 @media (max-width: 768px) {
+    /* Stacks the map and sidebar vertically instead of side-by-side. */
     .travel-wrapper {
         flex-direction: column;
         height: auto;
     }
+
+    /* Allows the sidebar to shrink and adds a scroll limit so the map stays visible. */
     .location-sidebar {
         flex: auto;
-        max-height: 250px; /* Prevents long lists from pushing the map too far down */
+        max-height: 250px;
     }
+
+    /* Sets a fixed height for the map on smaller screens. */
     #map {
         height: 400px;
     }

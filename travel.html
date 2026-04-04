@@ -48,10 +48,13 @@
     const map = L.map('map').setView([43.59, -79.62], 10);
 
     // --- 2. ADD TILE LAYER (BASEMAP) ---
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
+    var OPNVKarte = L.tileLayer('https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Map <a href="https://memomaps.de/">memomaps.de</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var OpenSeaMap = L.tileLayer('https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png', {
+        attribution: 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
     }).addTo(map);
 
     // Custom LUFFY icon
@@ -68,9 +71,9 @@
         { name: "Ottawa", coords: [45.41, -75.67], country: "Canada",  zoom: 12, img: "assets/img/ottawa.jpg" },
         { name: "Chennai", coords: [13.04, 80.14], country: "India", zoom: 12, img: "assets/img/chennai.jpg" },
         { name: "Melbourne", coords: [-37.8136, 144.9631], country: "Australia",  zoom: 12, img: "assets/img/melbourne.jpg" },
-        { name: "Bangkok", coords: [13.7563, 100.5018], country: "Thailand", zoom: 12, img: "assets/img/bangkok.jpg" },
+        { name: "Bangkok", coords: [13.7563, 100.5018], country: "Thailand", zoom: 13, img: "assets/img/bangkok.jpg" },
         { name: "New Delhi", coords: [27.17, -78.04], country: "India", zoom: 12, img: "assets/img/newdelhi.jpg" },
-        { name: "Los Angeles", coords: [34.10, -118.34], country: "United States", zoom: 11, img: "assets/img/losangeles.jpg" }
+        { name: "Los Angeles", coords: [34.10, -118.34], country: "United States", zoom: 12, img: "assets/img/losangeles.jpg" }
     ];
 
     const menu = document.getElementById('location-menu');
