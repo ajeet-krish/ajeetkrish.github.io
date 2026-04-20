@@ -456,3 +456,210 @@ a:hover {
     font-size: 14px;
     line-height: 1.6;
 }
+
+/* ==========================================================================
+   9. WIKI & PROJECT REPORTS
+   ========================================================================== */
+
+.wiki-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.wiki-card {
+    background-color: #21222c;
+    border-left: 4px solid var(--purple);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0 8px 8px 0;
+}
+
+.wiki-card:hover {
+    transform: translateX(10px);
+    background-color: #282a36;
+    border-left-color: var(--pink);
+}
+
+.wiki-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.wiki-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cyan);
+}
+
+.wiki-tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.wiki-card-body {
+    font-size: 14px;
+    color: var(--foreground);
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Specific Modal Adjustment for long reports */
+.modal-content.wide {
+    max-width: 1200px;
+    width: 90%;
+}
+
+/* Split View for Gallery Projects */
+.split-view {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.split-media {
+    flex: 1;
+    min-width: 300px;
+}
+
+.split-specs {
+    flex: 0 0 35%;
+    min-width: 250px;
+    background: #1a1b26;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--current-line);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .split-view {
+        flex-direction: column;
+    }
+    .split-specs {
+        flex: 1;
+        width: 100%;
+        max-height: none;
+    }
+}
+
+/* Pinterest Grid for Gallery */
+.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.pinterest-item {
+    background: #1a1b26;
+    border: 1px solid var(--current-line);
+    border-radius: 6px;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.pinterest-item img,
+.pinterest-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.pinterest-caption {
+    font-size: 11px;
+    color: var(--comment);
+    margin-top: 8px;
+    text-align: center;
+}
+
+.pinterest-hero {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.pinterest-hero .hero-media {
+    flex: 1 1 50%;
+}
+
+.pinterest-hero .hero-specs {
+    flex: 1 1 50%;
+    background: #1a1b26;
+    padding: 18px;
+    border-radius: 6px;
+    border: 1px solid var(--current-line);
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .pinterest-hero {
+        flex-direction: column;
+    }
+    .pinterest-hero .hero-media,
+    .pinterest-hero .hero-specs {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+.project-report {
+    margin-top: 20px;
+}
+
+.report-phase {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--current-line);
+}
+
+.report-phase:last-child {
+    border-bottom: none;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.figure-container {
+    background: #1a1b26;
+    border: 1px solid var(--current-line);
+    border-radius: 6px;
+    padding: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.figure-container img, 
+.figure-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+.figure-caption {
+    font-size: 11px;
+    color: var(--comment);
+    margin-top: 10px;
+    font-family: 'Meslo LG L', monospace;
+    text-align: center;
+}
+
+.text-block {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
