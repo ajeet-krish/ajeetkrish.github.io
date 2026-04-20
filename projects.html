@@ -26,12 +26,117 @@
         <div class="card-title" style="color: var(--orange);">// Work in Progress</div>
         <br>
         <div style="color: var(--comment);">
-            <span style="color: var(--comment);">$</span> echo "This section is currently being updated."<br>
-            <span style="color: var(--comment);">$</span> echo "Check back soon for detailed project documentation."<br>
+            <span style="color: var(--comment);">$</span> echo "Major project write-ups coming soon."<br>
             <span style="color: var(--comment);">$</span> _
         </div>
     </div>
+
+    <div class="section-header" style="color: var(--cyan); margin-top: 50px;"># CAD Gallery</div>
+    <div class="gallery-grid">
+        <!-- Crankshaft Project -->
+        <div class="gallery-card" onclick="openGallery('crankshaft')">
+            <video muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                <source src="assets/projects/crankshaft/crankshaft animated.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-card-overlay">
+                <div class="gallery-card-title">Crankshaft Assembly</div>
+                <div style="font-size: 10px; color: var(--comment);">[ Click to Expand ]</div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Gallery Modal -->
+<div id="gallery-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeGallery()">&times;</span>
+        <div class="modal-header">
+            <h2 id="modal-title" style="color: var(--cyan); margin: 0;"></h2>
+        </div>
+        <div class="modal-tabs">
+            <button class="tab-btn active" onclick="switchTab('animation')">[ 01. Animation ]</button>
+            <button class="tab-btn" onclick="switchTab('specs')">[ 02. Specs ]</button>
+        </div>
+        <div class="modal-body-content">
+            <div id="tab-content-animation" class="tab-content">
+                <div class="modal-media-container">
+                    <video id="modal-video" controls loop muted>
+                        <source id="modal-video-source" src="" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div id="tab-content-specs" class="tab-content" style="display: none;">
+                <div class="modal-description" id="modal-description">
+                    <!-- Specs injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const projects = {
+        'crankshaft': {
+            title: 'Crankshaft Assembly',
+            video: 'assets/projects/crankshaft/crankshaft animated.mp4',
+            specs: `
+                <ul style="list-style-type: none; padding: 0;">
+                    <li><span style="color: var(--purple);">Software:</span> Autodesk Fusion</li>
+                    <li><span style="color: var(--purple);">Complexity:</span> 12+ Interlocking Components</li>
+                    <li><br>Detailed assembly focusing on internal combustion stroke mechanics and rotational balancing.</li>
+                </ul>
+            `
+        }
+    };
+
+    function openGallery(id) {
+        const project = projects[id];
+        const modal = document.getElementById('gallery-modal');
+        const video = document.getElementById('modal-video');
+        const videoSource = document.getElementById('modal-video-source');
+        
+        document.getElementById('modal-title').innerText = project.title;
+        document.getElementById('modal-description').innerHTML = project.specs;
+        
+        videoSource.src = project.video;
+        video.load();
+        
+        modal.style.display = "block";
+        video.play();
+        
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+    }
+
+    function closeGallery() {
+        const modal = document.getElementById('gallery-modal');
+        const video = document.getElementById('modal-video');
+        
+        modal.style.display = "none";
+        video.pause();
+        
+        document.body.style.overflow = "auto";
+    }
+
+    function switchTab(tab) {
+        // Toggle Buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.innerText.toLowerCase().includes(tab)) btn.classList.add('active');
+        });
+
+        // Toggle Content
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        document.getElementById('tab-content-' + tab).style.display = 'block';
+    }
+
+    // Close on outside click
+    window.onclick = function(event) {
+        const modal = document.getElementById('gallery-modal');
+        if (event.target == modal) closeGallery();
+    }
+</script>
 
 </body>
 </html>
